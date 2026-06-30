@@ -24,7 +24,7 @@ stages {
 
 post {
     success {
-        echo 'Deployment successful!'
+        echo 'Deployment successfully!'
     }
     failure {
         echo 'Deployment failed.'

@@ -1,13 +1,8 @@
 # pipelineUbuntu 
 
-ssh-keygen 
-
-Redhat 
+############# Redhat 
 
 ssh-keygen -t rsa -b 4096 -m PEM -f ~/.ssh/jenkins_red2_key -C "jenkins-master"
-
-Debian
-
 
 # Hello project with github codespace
 
@@ -50,10 +45,6 @@ Now go to jenkins and create a job :
 sudo yum  install -y python3 python3-pip nginx git
 sudo systemctl enable --now nginx
 
-Python virtualenv setup:
-
-sudo yum  install -y python3-virtualenv
-
 
 Create a systemd service file.
 
@@ -81,7 +72,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable myflaskapp
 
 
-Nginx Reverse Proxy
+##################### Nginx Reverse Proxy
 
 sudo nano /etc/nginx/conf.d/myflaskapp.conf
 

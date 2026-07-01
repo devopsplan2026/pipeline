@@ -47,7 +47,7 @@ Now go to jenkins and create a job :
 
 2. RedHat  ( Install manually )
 
-sudo yum  install -y python3 python3-pip nginx
+sudo yum  install -y python3 python3-pip nginx git
 sudo systemctl enable --now nginx
 
 Python virtualenv setup:
@@ -68,12 +68,12 @@ After=network.target
 User=ec2-user
 Group=ec2-user
 WorkingDirectory=/opt/myflaskapp
-Environment="PATH=/opt/myflaskapp/venv/bin"
-ExecStart=/opt/myflaskapp/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 app:app
+ExecStart=/usr/local/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 app:app
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
+
 
 --------------------------
 
@@ -129,6 +129,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+                    sudo mkdir -p ${DEPLOY_DIR}
                     sudo cp app.py ${DEPLOY_DIR}/
                     sudo systemctl restart myflaskapp
                 '''

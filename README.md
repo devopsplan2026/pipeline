@@ -45,6 +45,7 @@ Now go to jenkins and create a job :
 sudo yum  install -y python3 python3-pip nginx git
 sudo systemctl enable --now nginx
 
+sudo python3 -m pip install gunicorn flask    
 
 Create a systemd service file.
 
@@ -100,8 +101,14 @@ Pay attention to SELinux and the firewall (they are enabled by default on RedHat
 sudo setsebool -P httpd_can_network_connect 1
 getsebool httpd_can_network_connect
 
+sudo systemctl status myflaskapp      ( if showing failed then )
 
-Jenkinsfile 
+sudo python3 -m pip install gunicorn flask
+
+sudo systemctl restart myflaskapp
+sudo systemctl status myflaskapp
+
+################## Jenkinsfile 
 
 pipeline {
     agent { label 'red' }

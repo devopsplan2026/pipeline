@@ -15,6 +15,7 @@ stages {
     stage('Deploy') {
         steps {
             sh '''
+                sudo mkdir -p ${DEPLOY_DIR}
                 sudo cp app.py ${DEPLOY_DIR}/
                 sudo systemctl restart myflaskapp
             '''
